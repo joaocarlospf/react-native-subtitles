@@ -8,7 +8,8 @@ import timeToSeconds from './time-to-seconds'
 const subtitleParser = async (subitleUrl: string): Promise<Subtitle[]> => {
   const { data: subtitleData } = await axios.get(subitleUrl)
 
-  const subtitleType = subitleUrl.split('.')[subitleUrl.split('.').length - 1]
+  const urlWithoutParams = subitleUrl.split('?')[0];
+  const subtitleType = urlWithoutParams.split('.').pop();
 
   const result: Subtitle[] = []
 
